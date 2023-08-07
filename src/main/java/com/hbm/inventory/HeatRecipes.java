@@ -186,7 +186,16 @@ public class HeatRecipes {
 	public static Object[] getBoilerOutput(Fluid type) {
 		if(hasBoilRecipe(type)){
 			return new Object[] { getBoilFluid(type), getOutputAmountHot(type), getInputAmountHot(type), (getBoilFluid(type).getTemperature()-273) * 100 };
+		} else if (type == FluidRegistry.WATER) {
+			return new Object[] { ModForgeFluids.steam, 500, 5, 10000 };
+		} else if (type == ModForgeFluids.steam) {
+			return new Object[] { ModForgeFluids.hotsteam, 5, 50, 30000 };
+		} else if (type == ModForgeFluids.hotsteam) {
+			return new Object[] { ModForgeFluids.superhotsteam, 5, 50, 45000 };
+		} else if (type == ModForgeFluids.oil) {
+			return new Object[] { ModForgeFluids.hotoil, 5, 5, 35000 };
+		} else {
+			return null;
 		}
-		return null;
 	}
 }
